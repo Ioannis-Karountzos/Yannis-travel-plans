@@ -1,88 +1,3 @@
-The Git Remote Command
-The git remote command will let you manage and interact with remote repositories.
-
-$ git remote
-Try running this command on a local repository that you haven't shared with anyone yet. What do you get?
-
-The Terminal application running the `git remote` command. No output is displayed since this repository does not have a connection to a remote.
-The Terminal application running the git remote command. No output is displayed since this repository does not have a connection to a remote.
-
-If you haven't configured a remote repository then this command will display nothing. One caveat to this is if you have cloned a repository. If you have, then your repository will automatically have a remote because it was cloned from the repository at the URL you provided. Let's look at a repository that has been cloned.
-
-The Terminal application running the `git remote` command. It outputs the word `origin`.
-The Terminal application running the git remote command. It outputs the word origin.
-
-The project I'm in is a clone of a Google's project called Lighthouse. This project was cloned from GitHub and is for auditing, performance metrics, and best practices for Progressive Web Apps.
-
-Remote Shortnames
-The output of git remote is just the word origin. Well that's weird. The word "origin", here, is referred to as a "shortname". A shortname is just a short and easy way to refer to the location of the remote repository. A shortname is local to the current repository (as in, your local repository). The word "origin" is the defacto name that's used to refer to the main remote repository. It's possible to rename this to something else, but typically it's left as "origin".
-
-Why do we care about how easy it is to refer to a remote repositories location? Well as you'll soon find out we'll be needing the path to the remote repository in a lot of our commands. And it's a lot easier to use just a name rather than the entire path to the remote repository.
-
-For example which one of these is easier to understand:
-
-Head north for about a quarter of a mile, then turn left, go straight down that road for about 5 miles, then turn right, proceed straight for about 300 feet until you past the blue mailbox, turn left down Jack Street, go 50 feet then turn left again on Owen Road, that will curve around until you hit Finn Lane. The structure that's the third one on the left
-Grandma's house
-You can see that it's a lot easier to refer to a location by just a short name like Grandma's house rather than the entire way to get there from your current location 😉
-
-If you want to see the full path to the remote repository, then all you have to do is use the -v flag:
-
-The Terminal application running the `git remote` command. The output includes the shortname and the full URL that it refers to.
-The Terminal application running the git remote command. The output includes the shortname and the full URL that it refers to.
-
-Here you can see that if the word origin is used, what actually is used is the path to https://github.com/GoogleChrome/lighthouse.git . It also might seem a little bit odd that there are now two remotes both of them "origin" and both going to the same URL. The only difference is right at the end: the (fetch) part and the (push) part
-
-We'll be looking at both fetch and push in upcoming sections.
-
-We've done enough looking for now. Let's do something active and create our own simple project and send it to a remote repository!
-
-Create A Simple Project
-We're going to need a sample project to use during this course to test out working with remote repositories, sending updates to the remote repository, and getting changes from the remote repository, too.
-
-QUESTION 1 OF 5
-If you don't have a project that you want to use then you can follow along with me!
-
-create a new directory for your project with the name my-travel-plans
-
-use git init to turn the my-travel-plans directory into a Git repository
-
-create a README.md file
-
-create index.html
-
-create app.css
-
-README File Content
-# Travel Destinations
-
-A simple app to keep track of destinations I'd like to visit.
-HTML File Content
-Add the following content to the index.html file:
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Travels</title>
-    <meta name="description" content="">
-    <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
-
-    <div class="container">
-        <div class="destination-container">
-            <div class="destination" id="florida">
-                <h2>Florida</h2>
-            </div>
-
-            <div class="destination" id="paris">
-                <h2>Paris</h2>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
 CSS File Content
 Add the following information to the CSS file:
 
@@ -128,9 +43,14 @@ body {
     text-align: center;
 }
 
+.destination:hover h2 {
+    transform: rotate(0deg);
+}
+
 h2 {
     margin: 0;
     transform: rotate(-45deg);
+    transition: transform 0.5s;
     text-shadow: 0 0 5px #01579b;
 }
 
